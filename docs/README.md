@@ -8,7 +8,7 @@
 sudo pacman -S git plymouth cantarell-fonts
 ```
 
-## Install plymouth-theme-arch-elegant
+## Install Theme
 
 ```
 # Clone repo
@@ -24,7 +24,7 @@ sudo cp -r ./arch-elegant/ /usr/share/plymouth/themes/arch-elegant
 sudo plymouth-set-default-theme -R arch-elegant
 ```
 
-## Remove plymouth-theme-arch-elegant & restore defaults
+## Remove Theme
 
 ```
 sudo rm -r /usr/share/plymouth/themes/arch-elegant
