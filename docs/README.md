@@ -2,15 +2,21 @@
 
 <p><img src="./screenshot.png" /></p>
 
-## Install Dependencies
+## Install Theme (Arch/AUR)
 
 ```
+sudo pacman -S git
+git clone https://github.com/murkl/plymouth-theme-arch-elegant.git
+cd plymouth-theme-arch-elegant/aur
+makepkg -si
+```
+
+## Install Theme (manual)
+
+```
+# Install Dependencies
 sudo pacman -S git plymouth cantarell-fonts
-```
 
-## Install Theme
-
-```
 # Clone repo
 git clone https://github.com/murkl/plymouth-theme-arch-elegant.git
 
@@ -24,7 +30,7 @@ sudo cp -r ./arch-elegant/ /usr/share/plymouth/themes/arch-elegant
 sudo plymouth-set-default-theme -R arch-elegant
 ```
 
-## Remove Theme
+## Remove Theme (manual)
 
 ```
 sudo rm -r /usr/share/plymouth/themes/arch-elegant
