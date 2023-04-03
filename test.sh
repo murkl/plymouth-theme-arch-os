@@ -1,23 +1,26 @@
 #!/bin/bash
 [ -n "$DISPLAY" ] && echo "Must run from tty cli" && exit 1
 
+# Check if executed as root
+[ "$EUID" -ne 0 ] && echo "Run as root with:  sudo $0" && exit 1
+
 # Copy files
-sudo cp ./arch-elegant/watermark.png /usr/share/plymouth/themes/arch-elegant/
-sudo cp ./arch-elegant/arch-elegant.plymouth /usr/share/plymouth/themes/arch-elegant/
+cp ./arch-elegant/watermark.png /usr/share/plymouth/themes/arch-elegant/
+cp ./arch-elegant/arch-elegant.plymouth /usr/share/plymouth/themes/arch-elegant/
 
 # Start plymouth daemon
-sudo plymouthd
+plymouthd
 
 # A) Test system upgrade
-sudo plymouth change-mode --system-upgrade
-sudo plymouth --show-splash
+plymouth change-mode --system-upgrade
+plymouth --show-splash
 
 # B) Test password promt
-#sudo plymouth --show-splash
-#sudo plymouth ask-for-password
+# plymouth --show-splash
+# plymouth ask-for-password
 
 # Sleep for 8 seconds
 sleep 8
 
 # Quit
-sudo plymouth quit
+plymouth quit
