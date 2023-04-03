@@ -8,7 +8,7 @@ set -Eeuo pipefail
 [ -d /usr/share/plymouth/themes/arch-elegant ] && rm -rf /usr/share/plymouth/themes/arch-elegant
 
 # Copy new arch-elegant
-cp -r ./arch-elegant/ /usr/share/plymouth/themes/arch-elegant
+cp -r ./src /usr/share/plymouth/themes/arch-elegant
 
 # Set theme and rebuild
 plymouth-set-default-theme -R arch-elegant

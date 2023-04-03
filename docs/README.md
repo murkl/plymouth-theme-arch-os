@@ -24,7 +24,7 @@ git clone https://github.com/murkl/plymouth-theme-arch-elegant.git
 cd plymouth-theme-arch-elegant
 
 # Add to plymouth themes dir
-sudo cp -r ./arch-elegant/ /usr/share/plymouth/themes/arch-elegant
+sudo cp -r ./src /usr/share/plymouth/themes/arch-elegant
 
 # Set as default theme and rebuild
 sudo plymouth-set-default-theme -R arch-elegant

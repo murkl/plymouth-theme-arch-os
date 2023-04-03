@@ -5,8 +5,8 @@
 [ "$EUID" -ne 0 ] && echo "Run as root with:  sudo $0" && exit 1
 
 # Copy files
-cp ./arch-elegant/watermark.png /usr/share/plymouth/themes/arch-elegant/
-cp ./arch-elegant/arch-elegant.plymouth /usr/share/plymouth/themes/arch-elegant/
+cp ./src/watermark.png /usr/share/plymouth/themes/arch-elegant/
+cp ./src/arch-elegant.plymouth /usr/share/plymouth/themes/arch-elegant/
 
 # Start plymouth daemon
 plymouthd
