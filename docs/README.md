@@ -34,7 +34,7 @@ sudo plymouth-set-default-theme -R arch-elegant
 
 ```
 # Install dependencies
-sudo pacman -S git plymouth cantarell-fonts
+sudo pacman -S git cantarell-fonts
 
 # Clone repo
 git clone https://github.com/murkl/plymouth-theme-arch-elegant.git
