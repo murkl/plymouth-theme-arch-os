@@ -1,0 +1,16 @@
+pkgname=plymouth-theme-arch-elegant
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Arch Theme for Plymouth"
+arch=(any)
+url="https://github.com/murkl/plymouth-theme-arch-elegant"
+license=('unknown')
+depends=('plymouth' 'cantarell-fonts')
+source=($pkgname::git+https://github.com/murkl/plymouth-theme-arch-elegant.git)
+sha256sums=('SKIP')
+
+package() {
+	cd "${srcdir}/${pkgname}/arch-elegant"
+	mkdir -p "${pkgdir}/usr/share/plymouth/themes/arch-elegant"
+	install -Dvm644 ./* "${pkgdir}/usr/share/plymouth/themes/arch-elegant"
+}
