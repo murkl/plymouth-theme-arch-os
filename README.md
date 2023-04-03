@@ -1,1 +1,0 @@
-# plymouth-theme-arch-elegant

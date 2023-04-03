@@ -1,0 +1,56 @@
+[Plymouth Theme]
+Name=arch-elegant
+Description=Arch theme designed by murkl (template from spinner theme)
+ModuleName=two-step
+
+[two-step]
+Font=Cantarell 12
+TitleFont=Cantarell Light 30
+ImageDir=/usr/share/plymouth/themes/arch-elegant
+WatermarkHorizontalAlignment=.5
+WatermarkVerticalAlignment=.5
+HorizontalAlignment=.5
+VerticalAlignment=.66
+DialogHorizontalAlignment=.5
+DialogVerticalAlignment=.66
+TitleHorizontalAlignment=.5
+TitleVerticalAlignment=.66
+ProgressBarHorizontalAlignment=.5
+ProgressBarVerticalAlignment=.74
+Transition=none
+TransitionDuration=0.0
+BackgroundStartColor=0x2e3440ff
+BackgroundEndColor=0x2e3440ff
+ProgressBarBackgroundColor=0x4c566aff
+ProgressBarForegroundColor=0xeeedecff
+MessageBelowAnimation=true
+
+[boot-up]
+UseEndAnimation=false
+
+[shutdown]
+UseEndAnimation=false
+
+[reboot]
+UseEndAnimation=false
+
+[updates]
+SuppressMessages=true
+ProgressBarShowPercentComplete=true
+UseProgressBar=true
+Title=Installing Updates...
+SubTitle=Do not turn off your computer
+
+[system-upgrade]
+SuppressMessages=true
+ProgressBarShowPercentComplete=true
+UseProgressBar=true
+Title=Upgrading System...
+SubTitle=Do not turn off your computer
+
+[firmware-upgrade]
+SuppressMessages=true
+ProgressBarShowPercentComplete=true
+UseProgressBar=true
+Title=Upgrading Firmware...
+SubTitle=Do not turn off your computer

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="80mm"
+   height="50mm"
+   viewBox="0 0 80 50"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="template.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="3.0039562"
+     inkscape:cx="88.71634"
+     inkscape:cy="111.5196"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#4c566a;fill-opacity:1;stroke-width:0.264999"
+       id="rect960"
+       width="34"
+       height="3.4000001"
+       x="23"
+       y="24.408897"
+       rx="0.40000001"
+       ry="0.40000001" />
+    <path
+       id="rect962"
+       style="fill:#4c566a;fill-opacity:1;stroke-width:0.264999"
+       d="m 40.000001,36.192227 c -0.2216,0 -0.399976,0.178376 -0.399976,0.399976 v 2.600358 c 0,0.2216 0.178376,0.399975 0.399976,0.399975 h 0.399975 v -3.400309 z"
+       inkscape:export-filename="lock.png"
+       inkscape:export-xdpi="254.0155"
+       inkscape:export-ydpi="254.0155" />
+    <path
+       id="rect968"
+       style="fill:#4c566a;fill-opacity:1;stroke-width:0.264999"
+       d="m 23.39998,41.128464 v 3.399793 h 32.800066 c 0.221598,0 0.399974,-0.178376 0.399974,-0.399976 V 41.52844 c 0,-0.2216 -0.178376,-0.399976 -0.399974,-0.399976 z"
+       inkscape:export-filename="entry.png"
+       inkscape:export-xdpi="254.0155"
+       inkscape:export-ydpi="254.0155" />
+    <rect
+       style="fill:#26a269;fill-opacity:1;stroke-width:0.0406489"
+       id="rect965"
+       width="0.80000001"
+       height="3.4000001"
+       x="39.599998"
+       y="15.493976" />
+    <rect
+       style="fill:#26a269;fill-opacity:1;stroke-width:0.261862"
+       id="rect970"
+       width="33.200001"
+       height="3.4000001"
+       x="23.4"
+       y="19.941938" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;fill:#3d3846;stroke-width:0.264999"
+       x="15.588464"
+       y="17.79948"
+       id="text1275"><tspan
+         sodipodi:role="line"
+         id="tspan1273"
+         style="font-size:2.11667px;fill:#3d3846;stroke-width:0.265"
+         x="15.588464"
+         y="17.79948">Lock:</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;fill:#3d3846;stroke-width:0.264999"
+       x="14.795761"
+       y="21.939167"
+       id="text1431"><tspan
+         sodipodi:role="line"
+         id="tspan1429"
+         style="font-size:2.11667px;fill:#3d3846;stroke-width:0.265"
+         x="14.795761"
+         y="21.939167">Entry:</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;fill:#3d3846;stroke-width:0.264999"
+       x="10.832238"
+       y="26.519238"
+       id="text1435"><tspan
+         sodipodi:role="line"
+         id="tspan1433"
+         style="font-size:2.11667px;fill:#3d3846;stroke-width:0.265"
+         x="10.832238"
+         y="26.519238">Template:</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;fill:#3d3846;stroke-width:0.264999"
+       x="23.874155"
+       y="5.8145618"
+       id="text1454"><tspan
+         sodipodi:role="line"
+         id="tspan1452"
+         style="font-size:2.11667px;fill:#3d3846;stroke-width:0.265"
+         x="23.874155"
+         y="5.8145618">Grün &amp; Template überschneiden</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;fill:#3d3846;stroke-width:0.264999"
+       x="31.31213"
+       y="10.749732"
+       id="text1609"><tspan
+         sodipodi:role="line"
+         id="tspan1607"
+         style="font-size:2.11667px;fill:#3d3846;stroke-width:0.265"
+         x="31.31213"
+         y="10.749732">Total size: 340x34</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;fill:#3d3846;stroke-width:0.264999"
+       x="36.178352"
+       y="33.65218"
+       id="text1632"><tspan
+         sodipodi:role="line"
+         id="tspan1630"
+         style="font-size:2.11667px;fill:#3d3846;stroke-width:0.265"
+         x="36.178352"
+         y="33.65218">Output:</tspan></text>
+  </g>
+</svg>
