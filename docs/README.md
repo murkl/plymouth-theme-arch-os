@@ -1,8 +1,13 @@
-# plymouth-theme-arch-elegant
+<div align="center">
+    <h1>plymouth-theme-arch-elegant</h1>
+    <p><img src="./screenshot.png" /></p>
+    <p><b>Arch Bootsplash Theme for Plymouth</b></p>
+    <p>
+        <img src="https://img.shields.io/badge/MAINTAINED-YES-green?style=for-the-badge">
+    </p>
+</div>
 
-<p><img src="./screenshot.png" /></p>
-
-## 1. Install Plymouth
+## Install Plymouth
 
 Follow the [Arch Wiki](https://wiki.archlinux.org/title/Plymouth) ...
 
