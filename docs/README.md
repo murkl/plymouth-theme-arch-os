@@ -5,12 +5,18 @@
 ## Install Dependencies
 
 ```
-sudo pacman -S plymouth cantarell-fonts
+sudo pacman -S git plymouth cantarell-fonts
 ```
 
 ## Install plymouth-theme-arch-elegant
 
 ```
+# Clone repo
+git clone https://github.com/murkl/plymouth-theme-arch-elegant.git
+
+# Change dir
+cd plymouth-theme-arch-elegant
+
 # Add to plymouth themes dir
 sudo cp -r ./arch-elegant/ /usr/share/plymouth/themes/arch-elegant
 
