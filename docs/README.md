@@ -59,7 +59,7 @@ sudo pacman -R plymouth-theme-arch-elegant
 sudo rm -r /usr/share/plymouth/themes/arch-elegant
 
 # Revert default theme
-sudo plymouth-set-default-theme -R bgrt
+sudo plymouth-set-default-theme --reset
 ```
 
 ## Image Information
