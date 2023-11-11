@@ -1,12 +1,12 @@
 [Plymouth Theme]
-Name=arch-elegant
+Name=arch-os
 Description=Arch theme designed by murkl (template from spinner theme)
 ModuleName=two-step
 
 [two-step]
 Font=Cantarell 12
 TitleFont=Cantarell Light 30
-ImageDir=/usr/share/plymouth/themes/arch-elegant
+ImageDir=/usr/share/plymouth/themes/arch-os
 WatermarkHorizontalAlignment=.5
 WatermarkVerticalAlignment=.5
 HorizontalAlignment=.5

@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>plymouth-theme-arch-elegant</h1>
+    <h1>plymouth-theme-arch-os</h1>
     <p><img src="./screenshot.png" /></p>
     <p><b>Arch Bootsplash Theme for Plymouth</b></p>
     <p>
@@ -18,16 +18,16 @@ Follow the [Arch Wiki](https://wiki.archlinux.org/title/Plymouth) ...
 sudo pacman -S git
 
 # Clone repo
-git clone https://github.com/murkl/plymouth-theme-arch-elegant.git
+git clone https://github.com/murkl/plymouth-theme-arch-os.git
 
 # Change dir
-cd plymouth-theme-arch-elegant/aur
+cd plymouth-theme-arch-os/aur
 
 # Make & install package
 makepkg -si
 
 # Set as default theme and rebuild
-sudo plymouth-set-default-theme -R arch-elegant
+sudo plymouth-set-default-theme -R arch-os
 ```
 
 ## Install Theme (manual)
@@ -37,26 +37,26 @@ sudo plymouth-set-default-theme -R arch-elegant
 sudo pacman -S git cantarell-fonts
 
 # Clone repo
-git clone https://github.com/murkl/plymouth-theme-arch-elegant.git
+git clone https://github.com/murkl/plymouth-theme-arch-os.git
 
 # Change dir
-cd plymouth-theme-arch-elegant
+cd plymouth-theme-arch-os
 
 # Add to plymouth themes dir
-sudo cp -r ./src /usr/share/plymouth/themes/arch-elegant
+sudo cp -r ./src /usr/share/plymouth/themes/arch-os
 
 # Set as default theme and rebuild
-sudo plymouth-set-default-theme -R arch-elegant
+sudo plymouth-set-default-theme -R arch-os
 ```
 
 ## Remove Theme
 
 ```
 # Arch/AUR
-sudo pacman -R plymouth-theme-arch-elegant
+sudo pacman -R plymouth-theme-arch-os
 
 # Manual
-sudo rm -r /usr/share/plymouth/themes/arch-elegant
+sudo rm -r /usr/share/plymouth/themes/arch-os
 
 # Revert default theme
 sudo plymouth-set-default-theme --reset

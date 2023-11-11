@@ -4,11 +4,11 @@ set -Eeuo pipefail
 # Check if executed as root
 [ "$EUID" -ne 0 ] && echo "Run as root with: sudo $0" && exit 1
 
-# Remove old arch-elegant
-[ -d /usr/share/plymouth/themes/arch-elegant ] && rm -rf /usr/share/plymouth/themes/arch-elegant
+# Remove old arch-os
+[ -d /usr/share/plymouth/themes/arch-os ] && rm -rf /usr/share/plymouth/themes/arch-os
 
-# Copy new arch-elegant
-cp -r ./src /usr/share/plymouth/themes/arch-elegant
+# Copy new arch-os
+cp -r ./src /usr/share/plymouth/themes/arch-os
 
 # Set theme and rebuild
-plymouth-set-default-theme -R arch-elegant
+plymouth-set-default-theme -R arch-os
