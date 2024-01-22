@@ -15,22 +15,7 @@ Follow the [Arch Wiki](https://wiki.archlinux.org/title/Plymouth) ...
 
 ## Install Theme (Arch/AUR)
 
-```
-# Install dependencies
-sudo pacman -S git
-
-# Clone repo
-git clone https://github.com/murkl/plymouth-theme-arch-os.git
-
-# Change dir
-cd plymouth-theme-arch-os/aur
-
-# Make & install package
-makepkg -si
-
-# Set as default theme and rebuild
-sudo plymouth-set-default-theme -R arch-os
-```
+Arch AUR: [plymouth-theme-arch-os](https://aur.archlinux.org/packages/plymouth-theme-arch-os)
 
 ## Install Theme (manual)
 
