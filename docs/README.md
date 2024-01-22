@@ -2,9 +2,10 @@
     <h1>plymouth-theme-arch-os</h1>
     <p>Used by <a href="https://github.com/murkl/arch-os">Arch OS</a></p>
     <p><img src="./screenshot.png" /></p>
-    <p><b>Arch Bootsplash Theme for Plymouth</b></p>
+    <p><b>Arch OS Bootsplash Theme for Plymouth</b></p>
     <p>
-        <img src="https://img.shields.io/badge/MAINTAINED-YES-green?style=for-the-badge">
+      <img src="https://img.shields.io/badge/MAINTAINED-YES-green?style=for-the-badge">
+      <img src="https://img.shields.io/badge/License-GPL_v2-blue?style=for-the-badge">
     </p>
 </div>
 

@@ -1,6 +1,6 @@
 [Plymouth Theme]
 Name=arch-os
-Description=Arch theme designed by murkl (template from spinner theme)
+Description=Arch OS theme designed by murkl (template from spinner theme)
 ModuleName=two-step
 
 [two-step]
@@ -53,4 +53,11 @@ SuppressMessages=true
 ProgressBarShowPercentComplete=true
 UseProgressBar=true
 Title=Upgrading Firmware...
+SubTitle=Do not turn off your computer
+
+[system-reset]
+SuppressMessages=true
+ProgressBarShowPercentComplete=true
+UseProgressBar=true
+Title=Resetting System...
 SubTitle=Do not turn off your computer
