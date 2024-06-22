@@ -63,3 +63,7 @@ sudo plymouth-set-default-theme --reset
 - Background: `#2e3440ff`
 - Foreground light: `#eeedecff`
 - Foreground dark: `#4c566aff`
+
+## Sources
+
+Spinner Repository: [Link](https://gitlab.freedesktop.org/plymouth/plymouth/-/tree/main/themes/spinner)
