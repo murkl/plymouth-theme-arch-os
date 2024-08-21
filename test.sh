@@ -12,12 +12,15 @@ cp ./src/arch-os.plymouth /usr/share/plymouth/themes/arch-os/
 plymouthd
 
 # A) Test system upgrade
-plymouth change-mode --system-upgrade
-plymouth --show-splash
+#plymouth change-mode --system-upgrade
+#plymouth --show-splash
 
 # B) Test password promt
-# plymouth --show-splash
-# plymouth ask-for-password
+#plymouth --show-splash
+#plymouth ask-for-password
+
+# C) Test spinner
+plymouth --show-splash
 
 # Sleep for 8 seconds
 sleep 8
