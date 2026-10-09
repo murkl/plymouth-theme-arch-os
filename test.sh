@@ -7,6 +7,8 @@
 # Copy files
 cp ./src/watermark.png /usr/share/plymouth/themes/arch-os/
 cp ./src/arch-os.plymouth /usr/share/plymouth/themes/arch-os/
+rm -f /usr/share/plymouth/themes/arch-os/animation-*.png
+cp ./src/animation-*.png /usr/share/plymouth/themes/arch-os/
 
 # Start plymouth daemon
 plymouthd
