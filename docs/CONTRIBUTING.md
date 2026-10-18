@@ -28,4 +28,6 @@ Merging the pull request `chore: release x.y.z` tags the version, publishes the 
 - `RELEASE_TOKEN` from `.github/release-token.sh`: a fine-grained token with Contents and Pull requests set to read and write
 - `AUR_SSH_KEY` from `tools/aur-key.sh`, whose public half goes into the AUR account
 
+A Publish that failed runs again under **Actions › CI › Run workflow** with the release's tag, once its cause is fixed on `main`.
+
 `make github` applies `.github/settings/` to the repository.
