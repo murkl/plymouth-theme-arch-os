@@ -7,7 +7,7 @@ IMAGE := archlinux:base-devel-20261011.0.609700@sha256:061679925e5d5028f2df9395d
 
 # What make check needs, then what tools/render.sh needs. CI installs both.
 PACKAGES        := shellcheck actionlint zizmor imagemagick librsvg plymouth
-RENDER_PACKAGES := plymouth gtk3 xorg-server-xvfb xorg-xwd imagemagick
+RENDER_PACKAGES := plymouth gtk3 xorg-server-xvfb xorg-xwd xdotool imagemagick
 
 .PHONY: all theme check lint theme-check aur-check render banner packages github clean
 

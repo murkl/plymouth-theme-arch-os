@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Draws the splash with Plymouth on a virtual screen and saves each state once the
-# logo or the field stands where two-step puts it. Installs the theme, so it runs
-# as root in a throwaway Arch system.
+# Draws the splash with Plymouth on a virtual screen and saves each state once
+# what it shows stands where two-step puts it. Installs the theme, so it runs as
+# root in a throwaway Arch system.
 # Usage: render.sh <folder>
 set -euo pipefail
 
@@ -75,6 +75,18 @@ read -r logo_w logo_h < <(magick identify -format '%w %h\n' "${work}/logo.png")
 read -r field_w field_h < <(magick identify -format '%w %h\n' "${work}/field.png")
 logo_x="$(place "$WIDTH" "$logo_w" "$(key WatermarkHorizontalAlignment)")"
 logo_y="$(place "$HEIGHT" "$logo_h" "$(key WatermarkVerticalAlignment)")"
+
+# The field after BULLETS keys, each bullet where ply-entry puts it.
+BULLETS=12
+read -r bullet_w bullet_h < <(magick identify -format '%w %h\n' src/bullet.png)
+lock_w="$(magick identify -format '%w' src/lock.png)"
+bullets=()
+for ((i = 0; i < BULLETS; i++)); do
+    bullets+=(src/bullet.png -geometry "+$((lock_w + i * bullet_w + bullet_w / 2))+$((field_h / 2 - bullet_h / 2))" -composite)
+done
+magick "${work}/field.png" "${bullets[@]}" "${work}/typed.png"
+printf -v keys '%*s' "$BULLETS" ''
+
 field_x="$(place "$WIDTH" "$field_w" "$(key DialogHorizontalAlignment)")"
 field_y="$(place "$HEIGHT" "$field_h" "$(key DialogVerticalAlignment)")"
 bar_x="$(place "$WIDTH" "$bar_w" "$(key ProgressBarHorizontalAlignment)")"
@@ -105,6 +117,8 @@ start
 shot "${out}/boot.png" "${work}/logo.png" "$logo_x" "$logo_y"
 plymouth ask-for-password --prompt='Please enter passphrase for disk root (cryptroot):' >/dev/null 2>&1 &
 shot "${out}/password.png" "${work}/field.png" "$field_x" "$field_y"
+xdotool type --delay 40 "${keys// /x}"
+shot "${out}/password.png" "${work}/typed.png" "$field_x" "$field_y"
 stop
 
 start
