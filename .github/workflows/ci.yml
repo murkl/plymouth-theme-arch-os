@@ -12,7 +12,7 @@ on:
 
 permissions: {}
 
-# A container's steps run in sh unless told otherwise.
+# Every step in bash with pipefail, as the Makefile runs its recipes.
 defaults:
   run:
     shell: bash
