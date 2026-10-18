@@ -1,11 +1,12 @@
 [Plymouth Theme]
 Name=arch-os
-Description=Arch OS theme designed by murkl (template from spinner theme)
+Description=The boot splash of Arch OS
 ModuleName=two-step
 
 [two-step]
-Font=Cantarell 12
-TitleFont=Cantarell Light 30
+Font=Adwaita Sans 12
+TitleFont=Adwaita Sans Light 30
+MonospaceFont=Adwaita Mono 12
 ImageDir=/usr/share/plymouth/themes/arch-os
 WatermarkHorizontalAlignment=.5
 WatermarkVerticalAlignment=.5
@@ -17,12 +18,14 @@ TitleHorizontalAlignment=.5
 TitleVerticalAlignment=.7
 ProgressBarHorizontalAlignment=.5
 ProgressBarVerticalAlignment=.8
-Transition=none
-TransitionDuration=0.0
+ProgressBarWidth=400
+ProgressBarHeight=5
 BackgroundStartColor=0x2e3440ff
 BackgroundEndColor=0x2e3440ff
 ProgressBarBackgroundColor=0x4c566aff
-ProgressBarForegroundColor=0xeeedecff
+ProgressBarForegroundColor=0xeceff4ff
+ConsoleLogBackgroundColor=0x2e3440ff
+ConsoleLogTextColor=0xd8dee9ff
 MessageBelowAnimation=true
 
 [boot-up]
@@ -38,26 +41,26 @@ UseEndAnimation=false
 SuppressMessages=true
 ProgressBarShowPercentComplete=true
 UseProgressBar=true
-Title=Installing Updates...
+Title=Installing Updates…
 SubTitle=Do not turn off your computer
 
 [system-upgrade]
 SuppressMessages=true
 ProgressBarShowPercentComplete=true
 UseProgressBar=true
-Title=Upgrading System...
+Title=Upgrading System…
 SubTitle=Do not turn off your computer
 
 [firmware-upgrade]
 SuppressMessages=true
 ProgressBarShowPercentComplete=true
 UseProgressBar=true
-Title=Upgrading Firmware...
+Title=Upgrading Firmware…
 SubTitle=Do not turn off your computer
 
 [system-reset]
 SuppressMessages=true
 ProgressBarShowPercentComplete=true
 UseProgressBar=true
-Title=Resetting System...
+Title=Resetting System…
 SubTitle=Do not turn off your computer
