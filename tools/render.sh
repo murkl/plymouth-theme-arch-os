@@ -22,8 +22,17 @@ cleanup() {
     kill "$xvfb" 2>/dev/null || true
     rm -rf "$work"
 }
-xvfb=""
+xvfb="" daemon=""
 trap cleanup EXIT
+
+# Fails with the end of the log, which plymouthd writes out as it quits.
+fail() {
+    echo "render: $1" >&2
+    plymouth quit 2>/dev/null || true
+    wait "$daemon" 2>/dev/null || true
+    tail -n 30 "${out}/plymouthd.log" >&2 || true
+    exit 1
+}
 
 rm -rf /usr/share/plymouth/themes/arch-os
 cp -rT src /usr/share/plymouth/themes/arch-os
@@ -47,9 +56,7 @@ shot() {
         fi
         sleep 0.2
     done
-    echo "render: ${2##*/} is not at +$3+$4 in ${1##*/}" >&2
-    tail -n 30 "${out}/plymouthd.log" >&2 || true
-    exit 1
+    fail "${2##*/} is not at +$3+$4 in ${1##*/}"
 }
 
 # Where two-step puts an image: screen * alignment - image * alignment, truncated.
@@ -74,21 +81,18 @@ bar_x="$(place "$WIDTH" "$bar_w" "$(key ProgressBarHorizontalAlignment)")"
 bar_y="$(place "$HEIGHT" "$bar_h" "$(key ProgressBarVerticalAlignment)")"
 
 # plymouthd wants a terminal, which neither a container nor CI has: script lends
-# it one for as long as it runs.
+# it one for as long as it runs. A virtual machine, as CI runs on, has a serial
+# console, which turns Plymouth to text.
 start() {
     local i
-    script -qec "plymouthd --no-daemon --kernel-command-line=splash --tty=\$(tty) --debug-file=$(printf '%q' "${out}/plymouthd.log")" \
+    script -qec "plymouthd --no-daemon --kernel-command-line='splash plymouth.ignore-serial-consoles' --tty=\$(tty) --debug-file=$(printf '%q' "${out}/plymouthd.log")" \
         /dev/null >/dev/null &
     daemon=$!
     for ((i = 0; i < 50; i++)); do
         plymouth --ping && break
         sleep 0.2
     done
-    if ! plymouth --ping; then
-        echo "render: plymouthd did not start" >&2
-        tail -n 30 "${out}/plymouthd.log" >&2 || true
-        exit 1
-    fi
+    plymouth --ping || fail "plymouthd did not start"
     plymouth show-splash
 }
 

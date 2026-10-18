@@ -12,6 +12,11 @@ on:
 
 permissions: {}
 
+# A container's steps run in sh unless told otherwise.
+defaults:
+  run:
+    shell: bash
+
 # A new push replaces a pull request's run. main queues, so no release is cut
 # short.
 concurrency:
