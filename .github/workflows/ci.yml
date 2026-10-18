@@ -1,0 +1,134 @@
+# Pull requests are checked, and main monthly against the newest Plymouth. Merging
+# the release pull request tags the version, publishes it and pushes the AUR package.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 6 1 * *'
+
+permissions: {}
+
+# Every step in bash with pipefail, as the Makefile runs its recipes.
+defaults:
+  run:
+    shell: bash
+
+# A new push replaces a pull request's run. main queues, so no release is cut
+# short.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # make check on Arch, then the splash as Plymouth draws it.
+  check:
+    name: Check
+    if: github.event_name != 'push'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    # The date names the base, the digest pins it. Publish and the Makefile use the same.
+    container: archlinux:base-devel-20261011.0.609700@sha256:061679925e5d5028f2df9395d441ce6c4b9accf0157ff3486c06b6962e014ef1
+    permissions:
+      contents: read
+    steps:
+      - run: pacman -Syu --noconfirm --needed make git
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - run: |
+          read -ra packages < <(make -s packages)
+          pacman -S --noconfirm --needed "${packages[@]}"
+
+      - run: make check
+
+      - run: tools/render.sh target/render
+
+  # The release pull request, or once that is merged, the tag and the release.
+  # Done as the account, not as the workflow's bot: GitHub holds the checks of
+  # a bot's pull request until someone approves its runs.
+  release:
+    name: Release
+    if: github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: release
+    outputs:
+      version: ${{ steps.please.outputs.version }}
+      tag: ${{ steps.please.outputs.tag_name }}
+    steps:
+      - env:
+          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          if [ -z "$RELEASE_TOKEN" ]; then
+            echo "::error::The repository has no secret RELEASE_TOKEN. docs/CONTRIBUTING.md says how to make it, then rerun this job."
+            exit 1
+          fi
+
+      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7  # v5.0.0
+        id: please
+        with:
+          token: ${{ secrets.RELEASE_TOKEN }}
+
+  # The tag's tarball on its release, the AUR files for it, built once as a user
+  # builds them, then pushed with a key only main may use. A rerun does it all
+  # again with the tarball already there.
+  publish:
+    name: Publish
+    needs: release
+    if: needs.release.outputs.version != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    container: archlinux:base-devel-20261011.0.609700@sha256:061679925e5d5028f2df9395d441ce6c4b9accf0157ff3486c06b6962e014ef1
+    environment: aur
+    permissions:
+      contents: write  # the tarball on the release
+    env:
+      TAG: ${{ needs.release.outputs.tag }}
+      VERSION: ${{ needs.release.outputs.version }}
+    steps:
+      - run: pacman -Syu --noconfirm --needed git openssh github-cli plymouth
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          ref: ${{ needs.release.outputs.tag }}
+          persist-credentials: false
+
+      # Packed once and kept on the release, so the sum in the AUR never changes.
+      # makepkg takes it beside the PKGBUILD.
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          tar="plymouth-theme-arch-os-${VERSION}.tar.gz"
+          mkdir aur-files
+          assets="$(gh release view "$TAG" --json assets --jq '.assets[].name')"
+          if grep -qxF "$tar" <<<"$assets"; then
+            gh release download "$TAG" --pattern "$tar" --dir aur-files
+          else
+            git archive --format=tar.gz --prefix="plymouth-theme-arch-os-${VERSION}/" -o "aur-files/${tar}" HEAD
+            gh release upload "$TAG" "aur-files/${tar}"
+          fi
+          tools/aur.sh "$VERSION" "aur-files/${tar}" aur-files
+          tools/aur-build.sh aur-files
+
+      # The host key as https://aur.archlinux.org names its fingerprint.
+      - env:
+          AUR_SSH_KEY: ${{ secrets.AUR_SSH_KEY }}
+        run: |
+          if [ -z "$AUR_SSH_KEY" ]; then
+            echo "::error::The environment aur has no secret AUR_SSH_KEY. tools/aur-key.sh sets it, then rerun this job."
+            exit 1
+          fi
+          ssh="${RUNNER_TEMP}/ssh"
+          install -d -m 700 "$ssh"
+          printf '%s\n' "$AUR_SSH_KEY" >"${ssh}/key"
+          chmod 600 "${ssh}/key"
+          echo 'aur.archlinux.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuBKrPzbawxA/k2g6NcyV5jmqwJ2s+zpgZGZ7tpLIcN' >"${ssh}/known_hosts"
+          export GIT_SSH_COMMAND="ssh -i ${ssh}/key -o IdentitiesOnly=yes -o UserKnownHostsFile=${ssh}/known_hosts -o StrictHostKeyChecking=yes"
+          tools/aur-push.sh aur-files

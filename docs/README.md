@@ -1,69 +1,38 @@
 <div align="center">
-    <h1>plymouth-theme-arch-os</h1>
-    <p>Used by <a href="https://github.com/murkl/arch-os">Arch OS</a></p>
-    <p><img src="./screenshot.png" /></p>
-    <p><b>Arch OS Bootsplash Theme for Plymouth</b></p>
-    <p>
-      <img src="https://img.shields.io/badge/MAINTAINED-YES-green?style=for-the-badge">
-      <img src="https://img.shields.io/badge/License-GPL_v2-blue?style=for-the-badge">
-    </p>
+
+<img src="banner.png" alt="Arch OS Boot Splash">
+
+<p><b>Arch Linux</b> boots in Nord,<br>from the first frame to the desktop.</p>
+
+**[➜ Arch OS](https://github.com/murkl/arch-os)** · **[➜ Contributing](CONTRIBUTING.md)**
+
+<p>
+  <a href="https://aur.archlinux.org/packages/plymouth-theme-arch-os"><img src="https://img.shields.io/aur/version/plymouth-theme-arch-os?style=flat-square&label=aur&color=5e81ac" alt="AUR version"></a>
+  <a href="https://github.com/murkl/plymouth-theme-arch-os/releases/latest"><img src="https://img.shields.io/github/v/release/murkl/plymouth-theme-arch-os?style=flat-square&label=release&color=5e81ac" alt="Latest release"></a>
+  <a href="../LICENSE"><img src="https://img.shields.io/github/license/murkl/plymouth-theme-arch-os?style=flat-square&color=5e81ac" alt="License"></a>
+</p>
+
 </div>
 
-## Install Plymouth
+## Features
 
-Follow the [Arch Wiki](https://wiki.archlinux.org/title/Plymouth) ...
+- Arch logo and spinner on Nord
+- Password prompt with keyboard layout and Caps Lock
+- Progress for updates, upgrades and resets
+- Boot messages on Esc, in the same colors
+- Logo and spinner fade out at the end
 
-## Install Theme (Arch/AUR)
+## Installation
 
-Arch AUR: [plymouth-theme-arch-os](https://aur.archlinux.org/packages/plymouth-theme-arch-os)
+From the **[AUR](https://aur.archlinux.org/packages/plymouth-theme-arch-os)**, with paru or yay:
 
-## Install Theme (manual)
-
-```
-# Install dependencies
-sudo pacman -S git cantarell-fonts
-
-# Clone repo
-git clone https://github.com/murkl/plymouth-theme-arch-os.git
-
-# Change dir
-cd plymouth-theme-arch-os
-
-# Add to plymouth themes dir
-sudo cp -r ./src /usr/share/plymouth/themes/arch-os
-
-# Set as default theme and rebuild
+```sh
+paru -S plymouth-theme-arch-os
 sudo plymouth-set-default-theme -R arch-os
 ```
 
-## Remove Theme
+**Note:** _Plymouth has to be set up first. **[➜ Arch Wiki](https://wiki.archlinux.org/title/Plymouth)**_
 
-```
-# Arch/AUR
-sudo pacman -R plymouth-theme-arch-os
+<br>
 
-# Manual
-sudo rm -r /usr/share/plymouth/themes/arch-os
-
-# Revert default theme
-sudo plymouth-set-default-theme --reset
-```
-
-## Image Information
-
-### Size
-
-- Watermark size: `150x150`
-- Total entry size: `340x34`
-- Lock size: `8x34`
-- Entry size: `332x34`
-
-### Color
-
-- Background: `#2e3440ff`
-- Foreground light: `#eeedecff`
-- Foreground dark: `#4c566aff`
-
-## Sources
-
-Spinner Repository: [Link](https://gitlab.freedesktop.org/plymouth/plymouth/-/tree/main/themes/spinner)
+<p align="center"><sub>The Arch Linux logo is a trademark of Arch Linux, used under its <a href="https://terms.archlinux.org/docs/trademark-policy/">trademark policy</a>.</sub></p>

@@ -1,0 +1,18 @@
+# Maintainer: murkl <murkl@users.noreply.github.com>
+# Stamped by tools/aur.sh at a release. The placeholders are filled there.
+
+pkgname=plymouth-theme-arch-os
+pkgver={{VERSION}}
+pkgrel=1
+pkgdesc='Boot splash of Arch OS for Plymouth'
+arch=('any')
+url='https://github.com/murkl/plymouth-theme-arch-os'
+license=('GPL-2.0-or-later')
+depends=('plymouth' 'adwaita-fonts')
+source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('{{SHA256}}')
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    install -Dm644 src/* -t "${pkgdir}/usr/share/plymouth/themes/arch-os"
+}
