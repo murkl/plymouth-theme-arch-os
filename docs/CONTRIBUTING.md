@@ -1,6 +1,6 @@
 # Contributing
 
-Every change comes back to `main` as one squash commit under its pull request title, in **[Conventional Commits](https://www.conventionalcommits.org)**, which sorts it into the release notes.
+Every change comes back to `main` as one squash commit under its pull request title, in **[Conventional Commits](https://www.conventionalcommits.org)**, which sorts it into the release notes. Written as a short phrase a user understands, the notes show it from a capital: `fix: the spinner fades with the logo` becomes `* The spinner fades with the logo`.
 
 ## Commands
 
