@@ -79,21 +79,14 @@ jobs:
             git -c safe.directory="$PWD" archive --format=tar.gz --prefix="plymouth-theme-arch-os-${VERSION}/" -o "aur-files/${tar}" HEAD
             gh release upload "$TAG" "aur-files/${tar}"
           fi
-          tools/aur.sh "$VERSION" "aur-files/${tar}" aur-files
-          tools/aur-build.sh aur-files
+          tools/aur.sh stamp "$VERSION" "aur-files/${tar}" aur-files
+          tools/aur.sh build aur-files
 
-      # The host key as https://aur.archlinux.org names its fingerprint.
       - env:
           AUR_SSH_KEY: ${{ secrets.AUR_SSH_KEY }}
         run: |
           if [ -z "$AUR_SSH_KEY" ]; then
-            echo "::error::The environment aur has no secret AUR_SSH_KEY. tools/aur-key.sh sets it, then rerun this job."
+            echo "::error::The environment aur has no secret AUR_SSH_KEY. tools/aur.sh key sets it, then rerun this job."
             exit 1
           fi
-          ssh="${RUNNER_TEMP}/ssh"
-          install -d -m 700 "$ssh"
-          printf '%s\n' "$AUR_SSH_KEY" >"${ssh}/key"
-          chmod 600 "${ssh}/key"
-          echo 'aur.archlinux.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuBKrPzbawxA/k2g6NcyV5jmqwJ2s+zpgZGZ7tpLIcN' >"${ssh}/known_hosts"
-          export GIT_SSH_COMMAND="ssh -i ${ssh}/key -o IdentitiesOnly=yes -o UserKnownHostsFile=${ssh}/known_hosts -o StrictHostKeyChecking=yes"
-          tools/aur-push.sh aur-files
+          tools/aur.sh push aur-files

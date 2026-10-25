@@ -42,8 +42,8 @@ aur-check:
 	rm -rf target/aur
 	mkdir -p target/aur
 	tar --transform 's|^|plymouth-theme-arch-os-0.0.0/|' -czf target/aur/plymouth-theme-arch-os-0.0.0.tar.gz src
-	tools/aur.sh 0.0.0 target/aur/plymouth-theme-arch-os-0.0.0.tar.gz target/aur
-	tools/aur-build.sh target/aur
+	tools/aur.sh stamp 0.0.0 target/aur/plymouth-theme-arch-os-0.0.0.tar.gz target/aur
+	tools/aur.sh build target/aur
 
 # The splash as Plymouth draws it, in a throwaway container. The pictures land
 # in target/render/.
