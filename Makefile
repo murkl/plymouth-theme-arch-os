@@ -21,7 +21,7 @@ theme:
 check: lint theme-check aur-check
 
 lint:
-	shellcheck tools/*.sh docs/*.sh .github/settings.sh .github/release-token.sh
+	shellcheck tools/*.sh docs/*.sh .github/*.sh
 	actionlint
 	zizmor --offline --quiet .github/workflows
 

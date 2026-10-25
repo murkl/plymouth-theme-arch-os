@@ -1,6 +1,6 @@
 # Contributing
 
-Every change comes back to `main` as one squash commit under its pull request title, in **[Conventional Commits](https://www.conventionalcommits.org)**: `fix:` releases a patch, `feat:` a minor and `feat!:` a major version.
+Every change comes back to `main` as one squash commit under its pull request title, in **[Conventional Commits](https://www.conventionalcommits.org)**, which sorts it into the release notes.
 
 ## Commands
 
@@ -23,11 +23,14 @@ sudo pacman -S --needed docker $(make -s packages)
 
 ## Releasing
 
-Merging the pull request `chore: release x.y.z` tags the version, publishes the release with its source tarball and pushes the AUR package. Two secrets do it, which only `main` may use:
+A version tag on an up-to-date `main` releases. The run publishes the release with its notes and source tarball, then pushes the AUR package. The notes and their checks come from **[murkl/workflows](https://github.com/murkl/workflows)**, checked out next to this project:
 
-- `RELEASE_TOKEN` from `.github/release-token.sh`: a fine-grained token with Contents and Pull requests set to read and write
-- `AUR_SSH_KEY` from `tools/aur-key.sh`, whose public half goes into the AUR account
+```
+../workflows/notes/notes.sh 1.1.0 && git tag 1.1.0 && git push origin 1.1.0
+```
 
-A Publish that failed runs again under **Actions › CI › Run workflow** with the release's tag, once its cause is fixed on `main`.
+- `fix:` raises the patch, `feat:` the minor, `feat!:` the major version
+- `AUR_SSH_KEY` from `tools/aur-key.sh`, whose public half goes into the AUR account. Only version tags may use it
+- A Publish that failed runs again with **Re-run failed jobs**. Tags never move, so a fix after a release is a new version
 
-`make github` applies `.github/settings/` to the repository.
+`make github` applies `.github/settings/` to the repository. `ruleset-tags.json` keeps every tag from being moved or deleted.
