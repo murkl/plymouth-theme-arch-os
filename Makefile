@@ -21,7 +21,7 @@ theme:
 check: lint theme-check aur-check
 
 lint:
-	shellcheck tools/*.sh docs/*.sh .github/*.sh
+	shellcheck tools/*.sh docs/*.sh
 	actionlint
 	zizmor --offline --quiet .github/workflows
 
@@ -60,10 +60,11 @@ banner: render
 packages:
 	@echo $(PACKAGES) $(RENDER_PACKAGES)
 
-# The repository's settings on GitHub, out of .github/settings/. Run by hand as
-# an admin: a workflow may not change the rules it is held to.
+# The repository's settings on GitHub, out of .github/settings/, by murkl/workflows
+# checked out next to this project. Run by hand as an admin: a workflow may not
+# change the rules it is held to.
 github:
-	.github/settings.sh
+	../workflows/settings/settings.sh
 
 clean:
 	rm -rf target
