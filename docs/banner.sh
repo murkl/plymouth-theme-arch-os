@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Renders docs/banner.png out of two frames of make render, the wordmark in
-# docs/wordmark.txt and the tagline in docs/README.md. banner.py is the same
-# file in every project that uses it. Needs chromium, python and ttf-firacode-nerd.
+# docs/wordmark.txt and the tagline in docs/README.md, by banner.py of
+# murkl/workflows checked out next to this project. Needs chromium, python and
+# ttf-firacode-nerd.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -41,7 +42,7 @@ for state in boot password; do
         "${work}/${state}.png"
 done
 
-python3 docs/banner.py \
+python3 ../workflows/banner/banner.py \
     --product "${work}/product.yaml" \
     --logo art/watermark.svg \
     --card "${work}/boot.png" \
